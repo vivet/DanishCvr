@@ -1,0 +1,63 @@
+name: Build and Deploy
+on:
+  pull_request:
+    branches:
+      - master 
+  push:
+    branches:
+      - master 
+env:
+  APP_NAME: DanishCvr
+  VERSION: 1.0.0-preview
+  NUGET_HOST: https://api.nuget.org/v3/index.json
+  NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.repository }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Build and Pack
+        shell: pwsh
+        run: |
+          dotnet build -c Release .\$env:APP_NAME.sln;
+          if ($LastExitCode -ne 0)
+          { 
+              throw "Build failed";
+          };
+
+          dotnet pack .\$env:APP_NAME\$env:APP_NAME.csproj -c Release --output nupkgs /p:PackageVersion=$env:VERSION;
+          if ($LastExitCode -ne 0)
+          { 
+              throw "Pack failed";
+          };
+
+      - name: Push NuGet
+        if: github.ref == 'refs/heads/master'
+        shell: pwsh
+        run: |
+          dotnet nuget push "nupkgs/*.nupkg" -s $env:NUGET_HOST -k $env:NUGET_APIKEY --skip-duplicate
+
+          if ($LastExitCode -ne 0)
+          { 
+              throw "Publish failed";
+          };
+
+      - name: GitHub Release
+        if: github.ref == 'refs/heads/master'
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ env.VERSION }}
+          name: "Release ${{ env.VERSION }}"
+          body: |
+            Version: ${{ env.VERSION }}
+            Commit: ${{ github.sha }}
+          artifacts: "nupkgs/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          prerelease: false

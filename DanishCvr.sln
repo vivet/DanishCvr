@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.7.11925.98
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DanishCvr", "DanishCvr\DanishCvr.csproj", "{83C0EE4D-CB54-4183-9AD4-C85F61F80C9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{28ED9C01-19FF-43EB-B8B2-76CBF3FCB6BD}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		icon.png = icon.png
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6D9C4AAA-6FBA-4B9E-B4AB-CA6A7EBECA54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F9F7BCC5-8A0A-4F5D-B7C9-7CA5BB055FC6}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-deploy.yml = .github\workflows\build-and-deploy.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tests", ".tests", "{D1B8DEAF-3A4B-4600-9C61-C4B8934305CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.DanishCvr", ".tests\Tests.DanishCvr\Tests.DanishCvr.csproj", "{62266B38-FCB3-48E9-B0EE-4D8A70FB1D7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83C0EE4D-CB54-4183-9AD4-C85F61F80C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C0EE4D-CB54-4183-9AD4-C85F61F80C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C0EE4D-CB54-4183-9AD4-C85F61F80C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C0EE4D-CB54-4183-9AD4-C85F61F80C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62266B38-FCB3-48E9-B0EE-4D8A70FB1D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62266B38-FCB3-48E9-B0EE-4D8A70FB1D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62266B38-FCB3-48E9-B0EE-4D8A70FB1D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62266B38-FCB3-48E9-B0EE-4D8A70FB1D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F9F7BCC5-8A0A-4F5D-B7C9-7CA5BB055FC6} = {6D9C4AAA-6FBA-4B9E-B4AB-CA6A7EBECA54}
+		{62266B38-FCB3-48E9-B0EE-4D8A70FB1D7D} = {D1B8DEAF-3A4B-4600-9C61-C4B8934305CC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3F4D62A-846E-4EE6-85A1-F7744EA24CA5}
+	EndGlobalSection
+EndGlobal
