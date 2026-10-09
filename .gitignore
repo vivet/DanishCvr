@@ -1,0 +1,15 @@
+**/*.user
+**/*.userprefs
+*.user
+*.userprefs
+*.suo
+*.tss
+*.vs
+_ReSharper*
+**/bin
+**/obj
+*.DotSettings.User
+**/wwwroot/lib
+.vs
+packages
+.env

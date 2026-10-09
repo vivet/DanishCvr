@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+	    <TargetFramework>net10.0</TargetFramework>
+		<NoWarn>NU5104</NoWarn>
+		<Version>1.0.0.0</Version>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<Configurations>Debug;Release</Configurations>
+		<LangVersion>latest</LangVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<License>LICENSE</License>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IsPackable>true</IsPackable>
+		<Authors>Michael Vivet</Authors>
+		<Owners>Michael Vivet</Owners>
+		<Company>Michael Vivet</Company>
+		<Product>DanishCvr</Product>
+		<Summary>Look up Danish companies, production units and persons in the Central Business Register (CVR).</Summary>
+		<Description>Search and retrieve company, production unit, person and relation information from the Danish Central Business Register (CVR), including status, business type, industry, employment, addresses and ownership. Includes a batch service for exporting the full register.</Description>
+		<PackageReleaseNotes>
+			- Initial Release
+		</PackageReleaseNotes>
+		<RepositoryType>Github</RepositoryType>
+		<RepositoryBranch>master</RepositoryBranch>
+		<RepositoryUrl>https://github.com/Vivet/DanishCvr.git</RepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageVersion>$(Version)</PackageVersion>
+		<PackageTags>cvr denmark danish company companies business registry virk datafordeler production-unit person industry branchekode kyc lookup elasticsearch</PackageTags>
+		<PackageProjectUrl>https://github.com/Vivet/DanishCvr</PackageProjectUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='RELEASE'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\branchekoder.json" />
+		<EmbeddedResource Include="Resources\postnumre.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE" Pack="true" Visible="false" PackagePath="" />
+		<None Include="..\icon.png" Pack="true" Visible="false" PackagePath="" />
+		<None Include="..\README.md" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.12" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.12" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.401" PrivateAssets="All" />
+		<PackageReference Include="NEST" Version="6.8.11" />
+		<PackageReference Include="NetTopologySuite" Version="2.6.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+	</ItemGroup>
+
+</Project>
