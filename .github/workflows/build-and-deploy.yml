@@ -8,7 +8,7 @@ on:
       - master 
 env:
   APP_NAME: DanishCvr
-  VERSION: 1.0.0-preview
+  VERSION: 1.0.0
   NUGET_HOST: https://api.nuget.org/v3/index.json
   NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
 jobs:
@@ -37,27 +37,27 @@ jobs:
               throw "Pack failed";
           };
 
-      # - name: Push NuGet
-      #   if: github.ref == 'refs/heads/master'
-      #   shell: pwsh
-      #   run: |
-      #     dotnet nuget push "nupkgs/*.nupkg" -s $env:NUGET_HOST -k $env:NUGET_APIKEY --skip-duplicate
+      - name: Push NuGet
+        if: github.ref == 'refs/heads/master'
+        shell: pwsh
+        run: |
+          dotnet nuget push "nupkgs/*.nupkg" -s $env:NUGET_HOST -k $env:NUGET_APIKEY --skip-duplicate
 
-      #     if ($LastExitCode -ne 0)
-      #     { 
-      #         throw "Publish failed";
-      #     };
+          if ($LastExitCode -ne 0)
+          { 
+              throw "Publish failed";
+          };
 
-      # - name: GitHub Release
-      #   if: github.ref == 'refs/heads/master'
-      #   uses: ncipollo/release-action@v1
-      #   with:
-      #     tag: v${{ env.VERSION }}
-      #     name: "Release ${{ env.VERSION }}"
-      #     body: |
-      #       Version: ${{ env.VERSION }}
-      #       Commit: ${{ github.sha }}
-      #     artifacts: "nupkgs/*"
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     draft: false
-      #     prerelease: false
+      - name: GitHub Release
+        if: github.ref == 'refs/heads/master'
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ env.VERSION }}
+          name: "Release ${{ env.VERSION }}"
+          body: |
+            Version: ${{ env.VERSION }}
+            Commit: ${{ github.sha }}
+          artifacts: "nupkgs/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          prerelease: false
