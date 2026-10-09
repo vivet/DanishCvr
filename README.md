@@ -96,4 +96,3 @@ Both services are registered by `AddDanishCvr()`.
 | Method | Description | Returns |
 |---|---|---|
 | `SearchAllAsync` | Walks all CVR number prefixes in parallel and hands each batch of companies to a callback. Used to build a local copy of the register. | `DebugInformation` |
-
