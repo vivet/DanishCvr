@@ -23,7 +23,7 @@
 		<Summary>Look up Danish companies, production units and persons in the Central Business Register (CVR).</Summary>
 		<Description>Search and retrieve company, production unit, person and relation information from the Danish Central Business Register (CVR), including status, business type, industry, employment, addresses and ownership. Includes a batch service for exporting the full register.</Description>
 		<PackageReleaseNotes>
-			- Initial Release
+			- Changed to Trusted publishing for NuGet
 		</PackageReleaseNotes>
 		<RepositoryType>Github</RepositoryType>
 		<RepositoryBranch>master</RepositoryBranch>
